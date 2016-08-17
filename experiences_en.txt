@@ -1,0 +1,18 @@
+<table class="old">
+	<tr>
+		<td>iOS Application</td>
+		<td>I designed and developed a mobile application to manage your food and know what recipe you can cook with your actual inventory.</td>
+	</tr>
+	<tr>
+		<td>PHP Website</td>
+		<td>I made a website called RPGFacts.fr which is about role playing games and working like fmylife.com</td>
+	</tr>
+	<tr>
+		<td>Javascript Games and Applications</td>
+		<td>Made for fun, with JQuery, AJAX and KineticJS</td>
+	</tr>
+	<tr>
+		<td>C++ Role Playing Game</td>
+		<td>Hybrid Text-Like RPG made in C++ with QtCreator</td>
+	</tr>
+</table>

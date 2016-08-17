@@ -1,0 +1,26 @@
+<table class="old">
+    <tr>
+		<td>Master</td>
+		<td>Software Architecture</td>
+		<td>2014-Today</td>
+		<td>University of Nantes</td>
+	</tr>
+    <tr>
+        <td>Licence</td>
+        <td>Numeric Medias</td>
+        <td>2013-2014</td>
+        <td>University of La Rochelle</td>
+    </tr>
+    <tr>
+        <td>DUT</td>
+        <td>Software Engineering</td>
+        <td>2011-2013</td>
+        <td>University Technological Institute of La Rochelle</td>
+    </tr>
+    <tr>
+        <td>Baccalauréat</td>
+        <td>Electronics</td>
+        <td>2008-2011</td>
+        <td>Louis Armand HighSchool</td>
+    </tr>
+</table>

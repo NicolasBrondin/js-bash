@@ -1,0 +1,26 @@
+<table class="old">
+    <tr>
+		<td>Master informatique</td>
+		<td>Architecture Logicielle</td>
+		<td>2014-Aujourd'hui</td>
+		<td>Université de Nantes</td>
+	</tr>
+	<tr>
+		<td>Licence informatique</td>
+		<td>Médias Numérique</td>
+		<td>2013-2014</td>
+		<td>Université de La Rochelle</td>
+	</tr>
+	<tr>
+		<td>DUT informatique</td>
+		<td>Génie Informatique</td>
+		<td>2011-2013</td>
+		<td>IUT Informatique de La Rochelle</td>
+	</tr>
+	<tr>
+		<td>Baccalauréat Technologique</td>
+		<td>Electronique</td>
+		<td>2008-2011</td>
+		<td>Lycée Louis Armand</td>
+	</tr>
+</table>

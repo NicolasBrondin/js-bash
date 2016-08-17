@@ -1,0 +1,13 @@
+<table class="old">
+	<tr>
+		<td>Linguistique</td>
+		<td>Français (Langue Maternelle)<br> Anglais (Bon Niveau)<br> Espagnol (Compréhension Basique)</td></tr><tr><td>Informatique</td>
+		<td>Langages de programmation: C/C++/C#, Java, Obj-C, Python
+			<br>Langages Web: PHP, Javascript, HTML5/CSS3
+			<br>IDE: Qt Creator, Visual Studio, XCode, Eclipse
+			<br>Base de données: Oracle, MySQL, PHPMyAdmin
+			<br>SE: Linux, Windows, MacOS
+			<br>UML: Modelio, Visual Paradigm
+		</td>
+	</tr>
+</table>
