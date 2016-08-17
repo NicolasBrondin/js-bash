@@ -1,0 +1,25 @@
+body, body input, body input:focus {
+    background: black;
+    color:white;
+    font-family: "consolas";
+    border:none;
+    font-size: 16px;
+}
+
+*:focus {
+    outline: 0;
+}
+
+span {
+    color: green;
+}
+
+table {
+    border-collapse: collapse;
+    margin:5px;
+}
+
+table td {
+    border-spacing: 0px;
+    padding: 5px;
+}
