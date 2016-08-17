@@ -2,7 +2,7 @@
     <tr>
 		<td>Master informatique</td>
 		<td>Architecture Logicielle</td>
-		<td>2014-Aujourd'hui</td>
+		<td>2014-2016</td>
 		<td>Université de Nantes</td>
 	</tr>
 	<tr>
