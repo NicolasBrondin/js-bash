@@ -2,9 +2,10 @@ var cat = {
     en:['Profile','Education','Competences','Experience','Hobbies'],
     fr:['Profil','Etudes','Compétences','Expérience','Hobbies']
 };
+
 function readfile(filename) {
     var info;
-    $.ajax({ type: 'GET', async: false, url: filename, dataType: 'text', success:function(data){
+    $.ajax({ type: 'GET', async: false, url: 'js/plugins/resume/data/'+filename, dataType: 'text', success:function(data){
         info=data;
     }});
     return info;

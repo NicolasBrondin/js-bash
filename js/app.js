@@ -1,10 +1,12 @@
-var text= [],
-    lang = 'en',
+var config,
+    plugins = [],
+    text= [],
     index= 0;
-var plugins = [];
 
 function recognize(text) {
     var cleaned = clean(text);
+    console.log(text);
+    
     for(c of plugins) {
         if(cleaned.indexOf(c.name) != -1) {
             return c.callback(cleaned);
@@ -16,7 +18,6 @@ function recognize(text) {
     } else { 
         return 'command not found';
     }
-    
 }
 
 function handleKeyDown(event) {
@@ -30,24 +31,21 @@ function handleKeyDown(event) {
         $(newtext).insertBefore('#current');
         $.scrollTo('#current',20);
         index=0;
-    }
-    //Gestion de l'historique des commandes
-    if(event.which==38) {
+    } else if(event.which==38) {
+        //Gestion de l'historique des commandes
         if(index<text.length)
         {
             $('#enter').val(text[text.length-1-index]);
             index++;
         }
-    }
-    if(event.which==40) {
+    } else if(event.which==40) {
         if(index>0)
         {
             index--;
             $('#enter').val(text[text.length-1-index]);
         }
-    }
-    //Gestion de l'autocomplétion
-    if(event.which==9) {
+    } else if(event.which==9) {
+        //Gestion de l'autocomplétion
         $('#enter').focus();
         if(event.preventDefault) 
         {
@@ -58,17 +56,26 @@ function handleKeyDown(event) {
 
 $(document).ready(function() {
     
-    $.ajax({dataType: "json", url:"js/plugins/plugins.json",  success: function(data) {
-      for(p of data) {
-          $.getScript( 'js/plugins/'+p.url+"/plugin.js", function(plugin) {
+    //Init the CLI with the config file
+    $.ajax({dataType: "json", url:"js/config.json",  success: function(data) {
+        config = data;
+        $(document).prop('title', config.title);
+        $('body').append("<p>"+config.welcome+"</p>");
+        $('body').append('<p id="current"><span>'+config.session+'</span><input type="text" id="enter" size="70"/></p>');
+        $('#enter').focus();
+        $(document).click(function() { $('#enter').focus(); });
+        $('#enter').keydown(handleKeyDown);	
+    }});
+    
+    //Load all the plugins
+    $.ajax({dataType: "json", url:"js/plugins/manifest.json",  success: function(manifest) {
+      for(plugin of manifest) {
+          $.getScript( 'js/plugins/'+plugin.url+"/plugin.js", function(data) {
               //Plugins loaded
           });
       }
     }});
-    
-    $('#enter').focus();
-    $(document).click(function() { $('#enter').focus(); });
-    $('#enter').keydown(handleKeyDown);			
+    	
 });
 
 		

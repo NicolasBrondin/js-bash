@@ -1,3 +1,4 @@
+var   lang = 'en';
 var cmd_clear = function() {
     $('.old').remove();
     return '';
