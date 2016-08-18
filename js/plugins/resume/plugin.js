@@ -1,6 +1,6 @@
 var cat = { 
-    en:['Profile','Education','Competences','Experience','Hobbies'],
-    fr:['Profil','Etudes','Compétences','Expérience','Hobbies']
+    en:['Profile','Education','Competences','Experiences','Contact'],
+    fr:['Profil','Etudes','Compétences','Expériences','Contact']
 };
 
 function readfile(filename) {

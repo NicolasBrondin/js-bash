@@ -1,9 +1,13 @@
 body, body input, body input:focus {
-    background: black;
-    color:white;
+    background: #0C090A;
+    color:#ecf0f1;
     font-family: "consolas";
     border:none;
     font-size: 16px;
+}
+
+a {
+    color: #2980b9;
 }
 
 *:focus {
@@ -11,7 +15,7 @@ body, body input, body input:focus {
 }
 
 span {
-    color: green;
+    color: #40d47e;
 }
 
 table {

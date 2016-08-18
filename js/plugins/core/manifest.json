@@ -1,0 +1,6 @@
+{
+    name:"core-plugin",
+    version:0.1,
+    dependencies:[],
+    extension_points:[]
+}

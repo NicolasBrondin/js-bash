@@ -4,20 +4,19 @@ var config,
     index= 0;
 
 function recognize(text) {
-    var cleaned = clean(text);
-    console.log(text);
-    
-    for(c of plugins) {
-        if(cleaned.indexOf(c.name) != -1) {
-            return c.callback(cleaned);
+    for(plugin of plugins) {
+        for(cmd in plugin.cmds) {
+            if(text.indexOf(cmd) != -1) {
+                return plugin.cmds[cmd].callback(text);
+            }
         }
     }
     
-    if(lang =='fr') {
+    /*if(lang =='fr') {
         return 'commande inconnue';
-    } else { 
+    } else { */
         return 'command not found';
-    }
+    //}
 }
 
 function handleKeyDown(event) {
@@ -68,9 +67,13 @@ $(document).ready(function() {
     }});
     
     //Load all the plugins
-    $.ajax({dataType: "json", url:"js/plugins/manifest.json",  success: function(manifest) {
+    $.ajax({dataType: "json", url:"js/plugins/dependencies.json",  success: function(manifest) {
+        console.log(manifest);
       for(plugin of manifest) {
-          $.getScript( 'js/plugins/'+plugin.url+"/plugin.js", function(data) {
+          console.log(plugin);
+          $.getScript( 'js/plugins/'+plugin.url+"/plugin.js", function(data, status) {
+              console.log(data);
+              console.log(status);
               //Plugins loaded
           });
       }

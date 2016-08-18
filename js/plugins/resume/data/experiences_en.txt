@@ -1,18 +1,27 @@
 <table class="old">
+    <tr>
+		<td>Web Developer</td>
+        <td>2016</td>
+		<td>Freelance</td>
+    </tr>
+    <tr>
+		<td>CTO and Co-Founder</td>
+        <td>2015 - 2016</td>
+		<td>Peetch</td>
+    </tr>
+    <tr>
+		<td>Android Developer (Internship)</td>
+        <td>2014</td>
+		<td>MyLiveGuard</td>
+    </tr>
 	<tr>
-		<td>iOS Application</td>
-		<td>I designed and developed a mobile application to manage your food and know what recipe you can cook with your actual inventory.</td>
-	</tr>
+		<td>iOS Developer (Internship)</td>
+        <td>2013</td>
+		<td>University of South Wales</td>
+    </tr>
 	<tr>
-		<td>PHP Website</td>
-		<td>I made a website called RPGFacts.fr which is about role playing games and working like fmylife.com</td>
-	</tr>
-	<tr>
-		<td>Javascript Games and Applications</td>
-		<td>Made for fun, with JQuery, AJAX and KineticJS</td>
-	</tr>
-	<tr>
-		<td>C++ Role Playing Game</td>
-		<td>Hybrid Text-Like RPG made in C++ with QtCreator</td>
+		<td>Web Developer</td>
+        <td>2011-2015</td>
+		<td>Personal projects</td>
 	</tr>
 </table>

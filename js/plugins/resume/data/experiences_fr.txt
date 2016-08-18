@@ -1,18 +1,27 @@
 <table class="old">
+    <tr>
+		<td>Développeur Web</td>
+        <td>2016</td>
+		<td>Freelance</td>
+    </tr>
+    <tr>
+		<td>Directeur Technique et Co-Fondateur</td>
+        <td>2015 - 2016</td>
+		<td>Peetch</td>
+    </tr>
+    <tr>
+		<td>Développeur Android (Stage)</td>
+        <td>2014</td>
+		<td>MyLiveGuard</td>
+    </tr>
 	<tr>
-		<td>Application iOS</td>
-		<td>J'ai designé et développé une application mobile pour gérer votre nourriture et savoir quelle recette vous pouvez cuisiner avec votre nourriture actuelle.</td>
-	</tr>
+		<td>Développeur iOS (Stage)</td>
+        <td>2013</td>
+		<td>University of South Wales</td>
+    </tr>
 	<tr>
-		<td>Site Web PHP</td>
-		<td>J'ai fait un site appelé RPGFacts.fr qui porte sur les jeux de rôles et qui fonctionne comme le site viedemerde.fr</td>
-	</tr>
-	<tr>
-		<td>Jeux et Applications Javascript</td>
-		<td>Faites pour m'amuser, avec JQuery, AJAX et KineticJS</td>
-	</tr>
-	<tr>
-		<td>Jeu de Rôles en C++</td>
-		<td>Jeu de rôle textuel hybride fait en C++ avec QtCreator </td>
+		<td>Développeur Web</td>
+        <td>2011-2015</td>
+		<td>Projets personnels</td>
 	</tr>
 </table>

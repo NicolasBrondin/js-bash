@@ -1,0 +1,22 @@
+<table class="old">
+	<tr>
+		<td>Facebook</td>
+		<td><a target="_blanck" href="https://www.facebook.com/nicolas.brondin">https://www.facebook.com/nicolas.brondin</a></td>
+	</tr>
+	<tr>
+		<td>Twitter</td>
+		<td><a target="_blanck" href="https://www.twitter.com/NicolasBrondin">https://www.twitter.com/NicolasBrondin</a></td>
+	</tr>
+	<tr>
+		<td>Linkedin</td>
+		<td><a target="_blanck" href="https://www.linkedin.com/in/nicolas-brondin">https://www.linkedin.com/in/nicolas-brondin</a></td>
+	</tr>
+	<tr>
+		<td>GitHub</td>
+		<td><a target="_blanck" href="https://github.com/NicolasBrondin/">https://github.com/NicolasBrondin/</a></td>
+	</tr>
+    <tr>
+		<td>Email</td>
+		<td><a target="_blanck" href="mailto:nicolas@brondin.com">nicolas@brondin.com</a></td>
+	</tr>
+</table>

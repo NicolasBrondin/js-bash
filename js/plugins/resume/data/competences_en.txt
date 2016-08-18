@@ -1,16 +1,24 @@
 <table class="old">
 	<tr>
-		<td>Linguistic</td>
-		<td>French (Native Speaker)<br>English (Good Level)<br> Spanish (Basic Understanding)</td>
-	</tr>
-	<tr>
 		<td>Computer Science</td>
-		<td>Programming languages: C/C++/C#, Java, Obj-C, Python
-			<br>Web languages: PHP, Javascript, HTML5/CSS3
-			<br>IDE: Qt Creator, Visual Studio, XCode, Eclipse
-			<br>Database: Oracle, MySQL, PHPMyAdmin
-			<br>OS: Linux, Windows, MacOS
-			<br>UML: Modelio, Visual Paradigm
+		<td>
+			Javascript, AngularJS, NodeJS, MongoDB<br>
+            Express.js, Bootstrap, Chrome Extension<br>
+            HTML, CSS, jQuery, SQL, Web Programming<br>
+            Software Architecture, GitHub
 		</td>
+	</tr>
+    <tr>
+		<td>Entrepreneurship</td>
+		<td>
+            Project Management, Scrum, Lean Startup
+        </td>
+	</tr>
+    <tr>
+		<td>Languages</td>
+		<td>
+            French (Native Speaker)<br>
+            English (Fluent)<br>
+        </td>
 	</tr>
 </table>
