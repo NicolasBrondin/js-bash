@@ -53,8 +53,7 @@ function handleKeyDown(event) {
     }
 };
 
-$(document).ready(function() {
-    
+
     //Init the CLI with the config file
     $.ajax({dataType: "json", url:"js/config.json",  success: function(data) {
         config = data;
@@ -72,13 +71,11 @@ $(document).ready(function() {
       for(plugin of manifest) {
           console.log(plugin);
           $.getScript( 'js/plugins/'+plugin.url+"/plugin.js", function(data, status) {
-              console.log(data);
               console.log(status);
               //Plugins loaded
           });
       }
     }});
-    	
-});
+
 
 		

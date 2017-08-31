@@ -1,7 +1,7 @@
 body, body input, body input:focus {
     background: #0C090A;
     color:#ecf0f1;
-    font-family: "consolas";
+    font-family: Consolas,monaco,monospace;
     border:none;
     font-size: 16px;
 }
