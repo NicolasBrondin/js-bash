@@ -1,6 +1,8 @@
 [{
-    "url":"/core"
+    "url":"/core",
+    "class_name": "CorePlugin"
 },{
     
-    "url":"/resume"
+    "url":"/resume",
+    "class_name": "ResumePlugin"
 }]

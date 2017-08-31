@@ -1,4 +1,5 @@
-var ResumePlugin = function() {
+var ResumePlugin = function(parent) {
+    this.parent = parent;
     this.vars = {
         cat :{ 
             en:['Profile','Education','Competences','Experiences','Contact'],
@@ -15,12 +16,11 @@ var ResumePlugin = function() {
         }
     };
 
-    this.cmds = [
-        {
+    this.cmds = {
             "ls":{  
                 callback: function() {
                     var html = '<table class="old">';
-                    for(item of cat[lang]) {
+                    for(item of this.vars.cat[this.parent.plugins[0].vars.lang]) {
                         html += "<tr><td>"+item+"</td></tr>";
                     }
                     return html+"</table>";
@@ -29,21 +29,21 @@ var ResumePlugin = function() {
                     en:{ usage:'ls', description:'show all the categories of my résumé'},
                     fr:{ usage:'ls', description:'affiche toutes les catégories de mon cv'}
                 }
-            }
-        },
-        {
+            },
+
+        
             "cat":{ 
                 callback: function(text) {
                     var cat_string = clean(text);
-                    for(c of cat[lang]) {
+                    for(c of cat[this.parent.plugins[0].vars.lang]) {
                         if(cat_string.indexOf(clean(c))!=-1) {
-                            content = readfile(clean(c)+'_'+lang+'.txt');
+                            content = readfile(clean(c)+'_'+this.parent.plugins[0].vars.lang+'.txt');
                             if(content)
                             return content;
                         }
                     }
     
-                    if(lang =='fr') {
+                    if(this.parent.plugins[0].vars.lang =='fr') {
                         return 'catégorie inconnue';
                     } else {
                         return 'category not found';
@@ -55,6 +55,4 @@ var ResumePlugin = function() {
                 }
             }
         }
-    ];
-
-plugins = plugins.concat([new ResumePlugin()]);
+};

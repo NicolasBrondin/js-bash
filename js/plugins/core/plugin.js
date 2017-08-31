@@ -1,4 +1,6 @@
-var CorePlugin = function() {
+var CorePlugin = function(parent) {
+    
+    this.parent = parent;
     
     this.vars = { lang:'en' };
     
@@ -35,10 +37,10 @@ var CorePlugin = function() {
         "help":{ 
             callback:function() {
                 var html = '<table class="old">';
-                for(plugin of plugins) {
-                    for(cmd in plugin.cmds) {
-                        console.log(plugin);
-                        html += "<tr><td>"+plugin.cmds[cmd].manual[this.vars.lang].usage+"</td><td>"+plugin.cmds[cmd].manual[this.vars.lang].description+"</td></tr>";
+                for(p of this.parent.plugins) {
+                    for(cmd in p.cmds) {
+                        console.log(p);
+                        html += "<tr><td>"+p.cmds[cmd].manual[this.vars.lang].usage+"</td><td>"+p.cmds[cmd].manual[this.vars.lang].description+"</td></tr>";
                     }
                 }
                 return html+"</table>";
@@ -87,6 +89,3 @@ var CorePlugin = function() {
         }
     }
 };
-
-
-plugins = plugins.concat([new CorePlugin()]);
