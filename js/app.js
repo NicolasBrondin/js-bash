@@ -23,34 +23,49 @@ var Console = function (element){
     }.bind(this);
 
     this.handleKeyDown = function(event) {
+        var input_element = document.getElementById('enter');
+        var current_element = document.getElementById('current');
+        var body = document.getElementsByTagName('body')[0];
+        var html = document.documentElement;
         if(event.which==13) {
-            this.text.push($('#enter').val());
-            $('#enter').val('');
+            this.text.push(input_element.value);
+            var last_text = this.text[this.text.length-1];
+            input_element.value = '';
+            
+            var old_text_element = document.createElement('p');
+            old_text_element.setAttribute('class','old');
+            old_text_element.innerHTML = '<span>Nicolas@Brondin></span>'+last_text;
+            
+            var last_text_element = document.createElement('p');
+            last_text_element.setAttribute('class','old');
+            last_text_element.innerHTML = this.recognize(last_text);
+            
+            console.log(old_text_element);
+            console.log(last_text_element);
+            console.log(current_element);
+            body.insertBefore(old_text_element, current_element);
+            body.insertBefore(last_text_element, current_element);
 
-            var oldtext = '<p class="old"><span>Nicolas@Brondin></span>'+this.text[this.text.length-1]+'</p>';
-            $(oldtext).insertBefore('#current');
-            var newtext = '<p class="old">'+this.recognize(this.text[this.text.length-1])+'</p>';
-            $(newtext).insertBefore('#current');
-            $.scrollTo('#current',20);
+            body.scrollTop = current.getBoundingClientRect().y;
+            html.scrollTop = current.getBoundingClientRect().y;
+
             this.index=0;
         } else if(event.which==38) {
             //Gestion de l'historique des commandes
-            if(this.index<this.text.length)
-            {
-                $('#enter').val(this.text[this.text.length-1-this.index]);
+            if(this.index<this.text.length){
+                input_element.value = this.text[this.text.length-1-this.index];
                 this.index++;
             }
         } else if(event.which==40) {
-            if(this.index>0)
-            {
+            if(this.index>0){
                 this.index--;
-                $('#enter').val(this.text[this.text.length-1-this.index]);
+                input_element.value = this.text[this.text.length-1-this.index];
             }
         } else if(event.which==9) {
             //Gestion de l'autocomplétion
-            $('#enter').focus();
-            if(event.preventDefault) 
-            {
+            input_element.focus();
+            
+            if(event.preventDefault) {
                 event.preventDefault();
             }
         }
@@ -66,10 +81,10 @@ var Console = function (element){
             var session_text= document.createElement('p');
             session_text.setAttribute('id','current');
             session_text.innerHTML = '<span>'+config.session+'</span><input type="text" id="enter" size="70"/>'
-             document.getElementsByTagName('body')[0].appendChild(welcome_text);
-             document.getElementsByTagName('body')[0].appendChild(session_text);
+            document.getElementsByTagName('body')[0].appendChild(welcome_text);
+            document.getElementsByTagName('body')[0].appendChild(session_text);
             document.getElementById("enter").focus();
-            document.addEventListener('click',function() { $('#enter').focus(); });
+            document.addEventListener('click',function() { document.getElementById("enter").focus(); });
             document.getElementById('enter').addEventListener('keydown',this.handleKeyDown);	
         }.bind(this));
 
@@ -77,11 +92,8 @@ var Console = function (element){
         load_json_file("js/plugins/dependencies.json",  function(manifest) {
           for(var p of manifest) {
               load_script_file(p, 'js/plugins/'+p.url+"/plugin.js", function(pl) {
-                  console.log("plugin loaded", window[pl.class_name]);
                   var o = new window[pl.class_name](this);
-                  console.log(o);
                   this.plugins.push(o);
-                  console.log(this.plugins);
               }.bind(this));
           }
         }.bind(this));

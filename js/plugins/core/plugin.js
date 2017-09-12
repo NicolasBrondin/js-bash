@@ -26,7 +26,11 @@ var CorePlugin = function(parent) {
     this.cmds = {
         "clear":{ 
             callback: function() {
-                $('.old').remove();
+                var to_remove = [];
+                to_remove = document.querySelectorAll('.old');
+                to_remove.forEach(function(r){
+                    document.body.removeChild(r);
+                });
                 return '';
             },
             manual:{

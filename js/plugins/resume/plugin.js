@@ -9,10 +9,21 @@ var ResumePlugin = function(parent) {
     this.functions = {
         readfile: function(filename) {
             var info;
-            $.ajax({ type: 'GET', async: false, url: 'js/plugins/resume/data/'+filename, dataType: 'text', success:function(data){
-                info=data;
-            }});
+            info = load_text_file('js/plugins/resume/data/'+filename);
             return info;
+        },
+        clean: function(s) {
+            var r = s.toLowerCase();
+            return r.replace(new RegExp("[àáâãäå]", 'g'),"a")
+                    .replace(new RegExp("æ", 'g'),"ae")
+                    .replace(new RegExp("ç", 'g'),"c")
+                    .replace(new RegExp("[èéêë]", 'g'),"e")
+                    .replace(new RegExp("[ìíîï]", 'g'),"i")
+                    .replace(new RegExp("ñ", 'g'),"n")                    
+                    .replace(new RegExp("[òóôõö]", 'g'),"o")
+                    .replace(new RegExp("œ", 'g'),"oe")
+                    .replace(new RegExp("[ùúûü]", 'g'),"u")
+                    .replace(new RegExp("[ýÿ]", 'g'),"y");
         }
     };
 
@@ -34,10 +45,10 @@ var ResumePlugin = function(parent) {
         
             "cat":{ 
                 callback: function(text) {
-                    var cat_string = clean(text);
-                    for(c of cat[this.parent.plugins[0].vars.lang]) {
-                        if(cat_string.indexOf(clean(c))!=-1) {
-                            content = readfile(clean(c)+'_'+this.parent.plugins[0].vars.lang+'.txt');
+                    var cat_string = this.functions.clean(text);
+                    for(c of this.vars.cat[this.parent.plugins[0].vars.lang]) {
+                        if(cat_string.indexOf(this.functions.clean(c))!=-1) {
+                            content = this.functions.readfile(this.functions.clean(c)+'_'+this.parent.plugins[0].vars.lang+'.txt');
                             if(content)
                             return content;
                         }
