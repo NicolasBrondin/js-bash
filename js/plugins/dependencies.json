@@ -1,6 +1,6 @@
 [{
-    "url":"/jam",
-    "class_name": "JamPlugin"
+    "url":"/unix",
+    "class_name": "UnixPlugin"
 },{
     "url":"/core",
     "class_name": "CorePlugin"

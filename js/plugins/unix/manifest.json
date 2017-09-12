@@ -1,5 +1,5 @@
 {
-    name:"jam-plugin",
+    name:"unix-plugin",
     version:0.1,
     dependencies:["core-plugin"],
     extension_points:[]

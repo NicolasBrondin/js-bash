@@ -1,4 +1,4 @@
-var JamPlugin = function(parent) {
+var UnixPlugin = function(parent) {
     this.parent = parent;
     this.process_launched = false;
     
@@ -13,25 +13,32 @@ var JamPlugin = function(parent) {
     this.processes = {
         jam: function(input){
             if(input == "quit"){
+                this.parent.write_something(">> Node exited <<");
                 this.process_launched = false;
             } else {
-                this.parent.write_something("Jam >> "+eval(input));
+                var r;
+                try{
+                    r = eval(input);
+                }catch(e){
+                    
+                }
+                this.parent.write_something("Node >> "+r);
             }
             return true;
         }.bind(this)
     };
 
     this.cmds = {
-        "jam":{  
+        "node":{  
             callback: function(parameters) {
                 setInterval(function(){console.log(document.body.style.backgroundColor);},1000);
                 this.process_launched = true;
-                this.parent.write_something(">> Jam started <<");
+                this.parent.write_something(">> Node started <<");
                 return true;
             }.bind(this),
             manual:{
-                en:{ usage:'jam', description:'start the code jam'},
-                fr:{ usage:'jam', description:'démarre le code jam'}
+                en:{ usage:'node', description:'start the code jam'},
+                fr:{ usage:'node', description:'démarre le code jam'}
             }
         }
     };
