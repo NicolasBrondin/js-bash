@@ -7,20 +7,49 @@ var Console = function (element){
 
     
     this.recognize = function(text) {
+        //var cmds = [];
+        var b = false;
+        this.plugins.forEach(function(p){
+            if(!b){
+                b = p.std_in(text);
+                console.log(b);
+            }
+        });
+        /*
         for(var p of this.plugins) {
+            this
             for(var cmd in p.cmds) {
                 if(text.indexOf(cmd) != -1) {
-                    return p.cmds[cmd].callback(text);
+                    cmds.push(p.cmds[cmd]);
                 }
             }
         }
-
+        var b = false;
+        cmds.forEach(function(cmd){
+            if(!b){
+                b = cmd.callback(text); 
+            }
+        });
         /*if(lang =='fr') {
             return 'commande inconnue';
         } else { */
-            return 'command not found';
+        //if(cmds.length <1)
+            //return 'command not found';
         //}
     }.bind(this);
+    
+    this.write_something = function(s){
+        var html = document.documentElement;
+        var current_element = document.getElementById('current');
+         var body = document.getElementsByTagName('body')[0];
+        var last_text_element = document.createElement('p');
+            last_text_element.setAttribute('class','old');
+        last_text_element.innerHTML = s;
+        body.insertBefore(last_text_element, current_element);
+        
+        body.scrollTop = current.getBoundingClientRect().y;
+            html.scrollTop = current.getBoundingClientRect().y;
+    };
 
     this.handleKeyDown = function(event) {
         var input_element = document.getElementById('enter');
@@ -36,16 +65,18 @@ var Console = function (element){
             old_text_element.setAttribute('class','old');
             old_text_element.innerHTML = '<span>Nicolas@Brondin></span>'+last_text;
             
-            var last_text_element = document.createElement('p');
-            last_text_element.setAttribute('class','old');
-            last_text_element.innerHTML = this.recognize(last_text);
+            body.insertBefore(old_text_element, current_element);
+            var t = this.recognize(last_text);
+            if(t){
+            last_text_element.innerHTML = t;
             
             console.log(old_text_element);
             console.log(last_text_element);
             console.log(current_element);
-            body.insertBefore(old_text_element, current_element);
+            
             body.insertBefore(last_text_element, current_element);
-
+            }
+            
             body.scrollTop = current.getBoundingClientRect().y;
             html.scrollTop = current.getBoundingClientRect().y;
 
@@ -103,9 +134,6 @@ var Console = function (element){
 };
 
 var c = new Console();
-
-
-    
 
 
 		

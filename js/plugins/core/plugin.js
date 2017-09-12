@@ -31,7 +31,6 @@ var CorePlugin = function(parent) {
                 to_remove.forEach(function(r){
                     document.body.removeChild(r);
                 });
-                return '';
             },
             manual:{
                 en:{ usage:'clear', description:'clear the console'},
@@ -47,7 +46,7 @@ var CorePlugin = function(parent) {
                         html += "<tr><td>"+p.cmds[cmd].manual[this.vars.lang].usage+"</td><td>"+p.cmds[cmd].manual[this.vars.lang].description+"</td></tr>";
                     }
                 }
-                return html+"</table>";
+                this.parent.write_something(html+"</table>");
             }.bind(this),
             manual:{
                 en:{ usage:'help', description: 'list all the commands available in the console'},
@@ -58,12 +57,12 @@ var CorePlugin = function(parent) {
             callback:function(text) {
                 if(this.functions.clean(text).indexOf(this.functions.clean(" fr"))!=-1){
                     this.vars.lang = 'fr';
-                    return 'langue changée';
+                    this.parent.write_something('langue changée');
                 } else if(this.functions.clean(text).indexOf(this.functions.clean(" en"))!=-1) {
                     this.vars.lang = 'en';
-                    return 'language changed';
+                    this.parent.write_something('language changed');
                 } else {
-                    return 'language not found';
+                    this.parent.write_something('language not found');
                 }
             }.bind(this),
             manual:{
@@ -74,7 +73,7 @@ var CorePlugin = function(parent) {
         "github":{
             callback:function() {
                 window.open('https://github.com/NicolasBrondin/cli-resume', '_blank');
-                return '';
+                
             },
             manual:{
                 en:{ usage:"github", description:'open the GitHub repo of this resume'},
@@ -84,7 +83,7 @@ var CorePlugin = function(parent) {
         "awesome":{
             callback:function() {
                 window.open('https://www.youtube.com/watch?v=SCwcJsBYL3o', '_blank');
-                return '';
+               
             },
             manual:{
                 en:{ usage:"awesome", description:'surprise...'},
@@ -92,4 +91,10 @@ var CorePlugin = function(parent) {
             }
         }
     }
+    
+    this.std_in = function(input){
+        if(this.cmds[input.split(' ')[0]]){
+            return this.cmds[input.split(' ')[0]].callback(input.split(' ')[1]);
+        }
+    };
 };

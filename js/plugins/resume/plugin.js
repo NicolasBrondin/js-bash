@@ -34,7 +34,8 @@ var ResumePlugin = function(parent) {
                     for(item of this.vars.cat[this.parent.plugins[0].vars.lang]) {
                         html += "<tr><td>"+item+"</td></tr>";
                     }
-                    return html+"</table>";
+                    //return html+"</table>";
+                    this.parent.write_something(html+"</table>");
                 }.bind(this),
                 manual:{
                     en:{ usage:'ls', description:'show all the categories of my résumé'},
@@ -50,15 +51,15 @@ var ResumePlugin = function(parent) {
                         if(cat_string.indexOf(this.functions.clean(c))!=-1) {
                             content = this.functions.readfile(this.functions.clean(c)+'_'+this.parent.plugins[0].vars.lang+'.txt');
                             if(content)
-                            return content;
+                            this.parent.write_something(content);
                         }
                     }
-    
+    /*
                     if(this.parent.plugins[0].vars.lang =='fr') {
-                        return 'catégorie inconnue';
+                        this.parent.write_something('catégorie inconnue');
                     } else {
-                        return 'category not found';
-                    }
+                        this.parent.write_something('category not found');
+                    }*/
                 }.bind(this),
                 manual:{
                     en:{ usage:"cat 'category'", description:'display the content of the selected category'},
@@ -66,4 +67,10 @@ var ResumePlugin = function(parent) {
                 }
             }
         }
+    
+    this.std_in = function(input){
+        if(this.cmds[input.split(' ')[0]]){
+            return this.cmds[input.split(' ')[0]].callback(input.split(' ')[1]);
+        }
+    };
 };

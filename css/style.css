@@ -27,3 +27,7 @@ table td {
     border-spacing: 0px;
     padding: 5px;
 }
+
+body input#enter {
+    background: none;
+}
