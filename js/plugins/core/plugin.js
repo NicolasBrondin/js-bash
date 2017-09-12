@@ -25,7 +25,7 @@ var CorePlugin = function(parent) {
     
     this.cmds = {
         "clear":{ 
-            callback: function() {
+            callback: function(parameters) {
                 var to_remove = [];
                 to_remove = document.querySelectorAll('.old');
                 to_remove.forEach(function(r){
@@ -38,7 +38,7 @@ var CorePlugin = function(parent) {
             }
         },
         "help":{ 
-            callback:function() {
+            callback:function(parameters) {
                 var html = '<table class="old">';
                 for(p of this.parent.plugins) {
                     for(cmd in p.cmds) {
@@ -54,11 +54,13 @@ var CorePlugin = function(parent) {
             }
         },
         "lang":{ 
-            callback:function(text) {
-                if(this.functions.clean(text).indexOf(this.functions.clean(" fr"))!=-1){
+            callback:function(parameters) {
+                console.log(parameters);
+                var text = parameters[0];
+                if(this.functions.clean(text).indexOf(this.functions.clean("fr"))!=-1){
                     this.vars.lang = 'fr';
                     this.parent.write_something('langue changée');
-                } else if(this.functions.clean(text).indexOf(this.functions.clean(" en"))!=-1) {
+                } else if(this.functions.clean(text).indexOf(this.functions.clean("en"))!=-1) {
                     this.vars.lang = 'en';
                     this.parent.write_something('language changed');
                 } else {
@@ -71,7 +73,7 @@ var CorePlugin = function(parent) {
             }
         },
         "github":{
-            callback:function() {
+            callback:function(parameters) {
                 window.open('https://github.com/NicolasBrondin/cli-resume', '_blank');
                 
             },
@@ -81,7 +83,7 @@ var CorePlugin = function(parent) {
             }
         },
         "awesome":{
-            callback:function() {
+            callback:function(parameters) {
                 window.open('https://www.youtube.com/watch?v=SCwcJsBYL3o', '_blank');
                
             },
@@ -94,7 +96,9 @@ var CorePlugin = function(parent) {
     
     this.std_in = function(input){
         if(this.cmds[input.split(' ')[0]]){
-            return this.cmds[input.split(' ')[0]].callback(input.split(' ')[1]);
+            var parameters = input.split(' ');
+            parameters.splice(0,1);
+            return this.cmds[input.split(' ')[0]].callback(parameters);
         }
     };
 };

@@ -29,9 +29,9 @@ var ResumePlugin = function(parent) {
 
     this.cmds = {
             "ls":{  
-                callback: function() {
+                callback: function(parameters) {
                     var html = '<table class="old">';
-                    for(item of this.vars.cat[this.parent.plugins[0].vars.lang]) {
+                    for(item of this.vars.cat[this.parent.plugins_set['CorePlugin'].vars.lang]) {
                         html += "<tr><td>"+item+"</td></tr>";
                     }
                     //return html+"</table>";
@@ -45,11 +45,12 @@ var ResumePlugin = function(parent) {
 
         
             "cat":{ 
-                callback: function(text) {
+                callback: function(parameters) {
+                    var text = parameters[0]
                     var cat_string = this.functions.clean(text);
-                    for(c of this.vars.cat[this.parent.plugins[0].vars.lang]) {
+                    for(c of this.vars.cat[this.parent.plugins_set['CorePlugin'].vars.lang]) {
                         if(cat_string.indexOf(this.functions.clean(c))!=-1) {
-                            content = this.functions.readfile(this.functions.clean(c)+'_'+this.parent.plugins[0].vars.lang+'.txt');
+                            content = this.functions.readfile(this.functions.clean(c)+'_'+this.parent.plugins_set['CorePlugin'].vars.lang+'.txt');
                             if(content)
                             this.parent.write_something(content);
                         }
@@ -70,7 +71,9 @@ var ResumePlugin = function(parent) {
     
     this.std_in = function(input){
         if(this.cmds[input.split(' ')[0]]){
-            return this.cmds[input.split(' ')[0]].callback(input.split(' ')[1]);
+            var parameters = input.split(' ');
+            parameters.splice(0,1);
+            return this.cmds[input.split(' ')[0]].callback(parameters);
         }
     };
 };

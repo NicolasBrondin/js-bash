@@ -1,13 +1,13 @@
 var Console = function (element){
     
     this.plugins = [];
+    this.plugins_set = {};
     this.config;
     this.text= [];
     this.index= 0;
 
     
     this.recognize = function(text) {
-        //var cmds = [];
         var b = false;
         this.plugins.forEach(function(p){
             if(!b){
@@ -15,27 +15,6 @@ var Console = function (element){
                 console.log(b);
             }
         });
-        /*
-        for(var p of this.plugins) {
-            this
-            for(var cmd in p.cmds) {
-                if(text.indexOf(cmd) != -1) {
-                    cmds.push(p.cmds[cmd]);
-                }
-            }
-        }
-        var b = false;
-        cmds.forEach(function(cmd){
-            if(!b){
-                b = cmd.callback(text); 
-            }
-        });
-        /*if(lang =='fr') {
-            return 'commande inconnue';
-        } else { */
-        //if(cmds.length <1)
-            //return 'command not found';
-        //}
     }.bind(this);
     
     this.write_something = function(s){
@@ -125,6 +104,7 @@ var Console = function (element){
               load_script_file(p, 'js/plugins/'+p.url+"/plugin.js", function(pl) {
                   var o = new window[pl.class_name](this);
                   this.plugins.push(o);
+                  this.plugins_set[pl.class_name] = o;
               }.bind(this));
           }
         }.bind(this));

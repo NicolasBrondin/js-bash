@@ -1,20 +1,21 @@
 var JamPlugin = function(parent) {
     this.parent = parent;
     this.process_launched = false;
+    
     this.vars = {
         
     };
+    
     this.functions = {
         
     };
     
     this.processes = {
         jam: function(input){
-            alert(input);
             if(input == "quit"){
-                console.log("quit");
-            this.process_launched = false;
-                console.log(this);
+                this.process_launched = false;
+            } else {
+                this.parent.write_something("Jam >> "+eval(input));
             }
             return true;
         }.bind(this)
@@ -22,10 +23,10 @@ var JamPlugin = function(parent) {
 
     this.cmds = {
         "jam":{  
-            callback: function() {
+            callback: function(parameters) {
                 setInterval(function(){console.log(document.body.style.backgroundColor);},1000);
                 this.process_launched = true;
-                this.parent.write_something("jam launched");
+                this.parent.write_something(">> Jam started <<");
                 return true;
             }.bind(this),
             manual:{
@@ -36,10 +37,11 @@ var JamPlugin = function(parent) {
     };
     
     this.std_in = function(input){
-        console.log(this);
         if(!this.process_launched){
             if(this.cmds[input.split(' ')[0]]){
-                return this.cmds[input.split(' ')[0]].callback(input.split(' ')[1]);
+                var parameters = input.split(' ');
+                parameters.splice(0,1);
+                return this.cmds[input.split(' ')[0]].callback(parameters);
             }
         } else {
             return this.processes.jam(input);
