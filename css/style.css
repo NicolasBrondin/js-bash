@@ -31,3 +31,7 @@ table td {
 body input#enter {
     background: none;
 }
+
+p {
+    margin:5px;
+}

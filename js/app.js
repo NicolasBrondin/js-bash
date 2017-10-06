@@ -42,7 +42,7 @@ var Console = function (element){
             
             var old_text_element = document.createElement('p');
             old_text_element.setAttribute('class','old');
-            old_text_element.innerHTML = '<span>Nicolas@Brondin></span>'+last_text;
+            old_text_element.innerHTML = '<span>'+config.session+'</span>'+last_text;
             
             body.insertBefore(old_text_element, current_element);
             var t = this.recognize(last_text);

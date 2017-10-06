@@ -66,6 +66,26 @@ var ResumePlugin = function(parent) {
                     en:{ usage:"cat 'category'", description:'display the content of the selected category'},
                     fr:{ usage:"cat 'catégorie'", description:'affiche le contenu de la catégorie sélectionnée'}
                 }
+            },
+            "github":{
+                callback:function(parameters) {
+                    window.open('https://github.com/NicolasBrondin/cli-resume', '_blank');
+
+                },
+                manual:{
+                    en:{ usage:"github", description:'open the GitHub repo of this resume'},
+                    fr:{ usage:"github", description:'ouvre le repo GitHub du CV'}
+                }
+            },
+            "awesome":{
+                callback:function(parameters) {
+                    window.open('https://www.youtube.com/watch?v=SCwcJsBYL3o', '_blank');
+
+                },
+                manual:{
+                    en:{ usage:"awesome", description:'surprise...'},
+                    fr:{ usage:"awesome", description:'surprise...'}
+                }
             }
         }
     

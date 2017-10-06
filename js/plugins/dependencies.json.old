@@ -1,0 +1,11 @@
+[{
+    "url":"/unix",
+    "class_name": "UnixPlugin"
+},{
+    "url":"/core",
+    "class_name": "CorePlugin"
+},{
+    
+    "url":"/resume",
+    "class_name": "ResumePlugin"
+}]

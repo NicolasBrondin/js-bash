@@ -1,11 +1,7 @@
 [{
-    "url":"/unix",
-    "class_name": "UnixPlugin"
+    "url":"/wonderland",
+    "class_name": "WonderlandPlugin"
 },{
     "url":"/core",
     "class_name": "CorePlugin"
-},{
-    
-    "url":"/resume",
-    "class_name": "ResumePlugin"
 }]

@@ -27,9 +27,11 @@ var CorePlugin = function(parent) {
         "clear":{ 
             callback: function(parameters) {
                 var to_remove = [];
-                to_remove = document.querySelectorAll('.old');
+                to_remove = document.querySelectorAll('p.old');
                 to_remove.forEach(function(r){
+                    if(r){
                     document.body.removeChild(r);
+                    }
                 });
             },
             manual:{
@@ -39,7 +41,7 @@ var CorePlugin = function(parent) {
         },
         "help":{ 
             callback:function(parameters) {
-                var html = '<table class="old">';
+                var html = '<table>';
                 for(p of this.parent.plugins) {
                     for(cmd in p.cmds) {
                         console.log(p);
@@ -52,7 +54,7 @@ var CorePlugin = function(parent) {
                 en:{ usage:'help', description: 'list all the commands available in the console'},
                 fr:{ usage:'help', description: 'liste toutes les commandes disponibles'}
             }
-        },
+        }/*,
         "lang":{ 
             callback:function(parameters) {
                 console.log(parameters);
@@ -71,27 +73,7 @@ var CorePlugin = function(parent) {
                 en:{ usage:"lang 'fr'", description:'change the language'},
                 fr:{ usage:"lang 'en'", description:'change la langue'}
             }
-        },
-        "github":{
-            callback:function(parameters) {
-                window.open('https://github.com/NicolasBrondin/cli-resume', '_blank');
-                
-            },
-            manual:{
-                en:{ usage:"github", description:'open the GitHub repo of this resume'},
-                fr:{ usage:"github", description:'ouvre le repo GitHub du CV'}
-            }
-        },
-        "awesome":{
-            callback:function(parameters) {
-                window.open('https://www.youtube.com/watch?v=SCwcJsBYL3o', '_blank');
-               
-            },
-            manual:{
-                en:{ usage:"awesome", description:'surprise...'},
-                fr:{ usage:"awesome", description:'surprise...'}
-            }
-        }
+        }*/
     }
     
     this.std_in = function(input){
